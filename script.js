@@ -2,10 +2,11 @@ const allcol=document.querySelectorAll('.col1')
 const btnEle=document.querySelector('button')
 let count=0
 let counter=1
+let flag;
 for(col of allcol){
     col.addEventListener('click',(e)=>{
         if(counter<=8){
-            let imgEle=document.createElement('img')
+        let imgEle=document.createElement('img')
         imgEle.style.width='100%'
         imgEle.style.height='100%'
         imgEle.style.backgroundColor='rgb(120, 120, 221)'
@@ -17,23 +18,40 @@ for(col of allcol){
             count=count+1
         }
         if(count==5){
-            alert('You Won')
             flag=1
+            alert('You Won')
+            
         }
         if(counter>8 && count<5){
             alert("You Lose")
         }
         }
         if(flag==1){
-            alert("Game Over")
             counter=9
+            alert("Game Over")
+            
         }
        
     })
 }
 btnEle.addEventListener('click',()=>{
-    btnEle.style.scale='1.5'
-    btnEle.style.transform='ease-in .5s'
-    window.location.reload()
+    btnEle.style.transform='scale(1.5)'
+    btnEle.style.transition='ease-out 2s'
+    setTimeout(() => {
+        btnEle.style.transform='scale(1)'
+    }, 1000);
+    
+    // window.location.reload()
+    for(col of allcol){
+        // console.log(col)
+        all=col.children
+        // console.log(all)
+        for(child of all){
+            // console.log('hello',child)
+            child.remove()
+            count=0
+            counter=1
+        }
+    }
 })
 
