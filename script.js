@@ -18,10 +18,15 @@ for(col of allcol){
         }
         if(count==5){
             alert('You Won')
+            flag=1
         }
-        if(counter>8){
+        if(counter>8 && count<5){
             alert("You Lose")
         }
+        }
+        if(flag==1){
+            alert("Game Over")
+            counter=9
         }
        
     })
